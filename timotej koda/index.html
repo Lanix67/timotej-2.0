@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timotej Legenda</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+      background: #0f0f0f;
+      color: white;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00ffc3;
+    }
+
+    section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #000, #1f1f1f);
+    }
+
+    .about {
+      background: #1a1a1a;
+    }
+
+    .gallery {
+      background: #222;
+    }
+
+    .footer {
+      background: #000;
+      height: 60vh;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #00ffc3;
+      border: none;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    img {
+      width: 250px;
+      border-radius: 15px;
+      margin: 10px;
+      transition: 0.4s;
+    }
+
+    img:hover {
+      transform: scale(1.1) rotate(2deg);
+    }
+
+    .mode {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #00ffc3;
+      color: black;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .party {
+      background: linear-gradient(45deg, red, purple, blue);
+      animation: flash 0.5s infinite;
+    }
+
+    @keyframes flash {
+      0% {filter: hue-rotate(0deg);} 
+      100% {filter: hue-rotate(360deg);} 
+    }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#home">Domov</a>
+  <a href="#about">O Timoteju</a>
+  <a href="#gallery">Galerija</a>
+  <a href="#contact">Kontakt</a>
+</nav>
+
+<section id="home" class="hero">
+  <h1>🔥 Timotej legenda 🔥</h1>
+  <p>Največji car, kjerkoli se pojavi.</p>
+  <a href="#about"><button class="btn">Spoznaj več</button></a>
+</section>
+
+<section id="about" class="about">
+  <h1>Kdo je Timotej?</h1>
+  <p>
+    Timotej ni samo človek… je stanje uma 😎
+    
+    Legenda med prijatelji, vedno nasmejan,
+    vedno pripravljen na akcijo – pa naj bo to chill ali party.
+  </p>
+</section>
+
+<section id="gallery" class="gallery">
+  <h1>Galerija 🔥</h1>
+  <img src="slika1.jpg">
+  <img src="slika2.jpg">
+  <img src="slika3.jpg">
+</section>
+
+<section id="contact" class="footer">
+  <h1>Kontakt</h1>
+  <p>Instagram: @timotej_legenda</p>
+  <p>"Če nisi legenda, kaj sploh delaš?"</p>
+</section>
+
+<div class="mode" onclick="partyMode()">🎉 Timotej mode</div>
+
+<script>
+
+// fade-in ob scrollu
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.classList.add("show");
+    }
+  });
+});
+
+// party mode
+function partyMode(){
+  document.body.classList.toggle("party");
+}
+
+</script>
+
+</body>
+</html>
